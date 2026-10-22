@@ -8,5 +8,8 @@
         "templateId": "python-empty"
     },
     "input": "./input_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
     "dockerfile": "../Dockerfile"
 }

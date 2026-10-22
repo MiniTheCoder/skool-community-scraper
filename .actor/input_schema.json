@@ -1,0 +1,99 @@
+{
+    "title": "Skool Community Scraper Input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "searchQuery": {
+            "title": "Search Query",
+            "type": "string",
+            "description": "Keyword to search for (e.g., 'marketing', 'ai', 'crypto', 'fitness'). Leave empty to browse all.",
+            "editor": "textfield",
+            "prefill": ""
+        },
+        "category": {
+            "title": "Category",
+            "type": "string",
+            "description": "Filter by Skool community category.",
+            "editor": "select",
+            "default": "all",
+            "enum": [
+                "all",
+                "tech",
+                "money",
+                "hobbies",
+                "music",
+                "health",
+                "sports",
+                "self_improvement",
+                "relationships",
+                "spirituality"
+            ],
+            "enumTitles": [
+                "All Categories",
+                "💻 Tech",
+                "💰 Money",
+                "🎨 Hobbies",
+                "🎸 Music",
+                "🥕 Health",
+                "⚽ Sports",
+                "📚 Self-improvement",
+                "❤️ Relationships",
+                "🙏 Spirituality"
+            ]
+        },
+        "price": {
+            "title": "Pricing Type",
+            "type": "string",
+            "description": "Filter by free or paid communities.",
+            "editor": "select",
+            "default": "all",
+            "enum": [
+                "all",
+                "free",
+                "paid"
+            ],
+            "enumTitles": [
+                "All (Free + Paid)",
+                "Free Only",
+                "Paid Only"
+            ]
+        },
+        "sort": {
+            "title": "Sort By",
+            "type": "string",
+            "description": "Ranking order for results.",
+            "editor": "select",
+            "default": "trending",
+            "enum": [
+                "trending",
+                "rank",
+                "members",
+                "newest"
+            ],
+            "enumTitles": [
+                "Trending",
+                "Rank",
+                "Total Members",
+                "Newest"
+            ]
+        },
+        "maxItems": {
+            "title": "Max Communities",
+            "type": "integer",
+            "description": "Maximum number of community records to scrape.",
+            "default": 100,
+            "minimum": 1,
+            "maximum": 5000,
+            "editor": "number"
+        },
+        "proxyConfiguration": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "description": "Optional proxy settings. Default datacenter proxy is usually fine for Skool discovery.",
+            "editor": "proxy",
+            "default": {
+                "useApifyProxy": false
+            }
+        }
+    }
+}

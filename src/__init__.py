@@ -1,0 +1,1 @@
+# Skool Community Scraper package

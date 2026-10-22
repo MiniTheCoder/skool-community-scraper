@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+storage/
+.idea/
+.vscode/
+*.json
+!actor.json
+!input_schema.json
+probe_*.py
+test_*.py
+inspect_*.py
+extract_*.py
+parse_*.py
+verify_*.py

@@ -1,74 +1,45 @@
-# Skool Community & Group Scraper 🚀
+# Skool Community Scraper
 
-Extract public Skool communities, rankings, member counts, pricing tiers, and creator metadata at scale. Built for market intelligence, creator lead generation, and competitive research on [Skool.com](https://www.skool.com).
+Extracts public community data from Skool's discovery directory without requiring a login or browser automation.
 
-Unlike traditional scrapers that run heavy headless browsers (Puppeteer/Playwright), this Actor uses **pure HTTP requests** to stream Next.js discovery payloads. It is **10x faster and uses 95% less compute**.
+## What it does
 
----
+This Actor queries Skool's public discovery portal (`skool.com/discovery`) and parses the server-rendered Next.js payload directly. It extracts group metadata, member counts, pricing tiers, and rankings.
 
-## 🔍 Features
+Because it uses HTTP requests instead of a headless browser (Puppeteer/Playwright), runs complete in 3–5 seconds and consume negligible compute ($0.001 per run).
 
-- **Keyword & Topic Search:** Search for any niche (e.g., `ai`, `marketing`, `crypto`, `fitness`, `sales`).
-- **Category Filtering:** Filter across all 9 official Skool categories (Tech, Money, Hobbies, Music, Health, Sports, Self-improvement, Relationships, Spirituality).
-- **Price Model Filtering:** Filter specifically for `Free` communities or `Paid` subscription communities.
-- **Sorting Options:** Sort results by `Trending`, `Rank`, `Total Members`, or `Newest`.
-- **Zero Browser Overhead:** Runs via lightweight HTTP streams—no browser crashes, minimal RAM, and maximum speed (~3 seconds for 100 communities).
-- **Export Anywhere:** Download structured data in **JSON, CSV, Excel, XML**, or sync directly to Google Sheets, Webhooks, or Make.com / Zapier.
+## Extracted data
 
----
+For each community, the actor outputs:
 
-## 📊 Extracted Data Fields
+- `name`: URL slug (e.g. `filmmaking` -> `skool.com/filmmaking`)
+- `displayName`: Public community name
+- `url`: Direct link to the community
+- `description`: Tagline / bio
+- `totalMembers`: Total registered members
+- `priceFormatted`: Human-readable price (e.g. `$69/month` or `Free`)
+- `isFree`: Boolean flag
+- `priceAmount`: Numerical amount (in USD)
+- `currency`: Billing currency
+- `billingInterval`: `month`, `year`, or one-time
+- `reviewAverageRating`: Rating (1.0 to 5.0)
+- `reviewCount`: Total member reviews
+- `rank`: Position in Skool discovery ranking
+- `logoUrl`: Avatar image
+- `coverSmallUrl`: Banner image
+- `createdAt` / `updatedAt`: ISO timestamps
 
-Each community record contains:
+## Input parameters
 
-| Field | Type | Description |
-|---|---|---|
-| `name` | String | Community unique URL slug |
-| `displayName` | String | Public title of the community |
-| `url` | String | Direct link (`https://www.skool.com/{name}`) |
-| `description` | String | Community tagline and pitch |
-| `totalMembers` | Integer | Total active members count |
-| `priceFormatted` | String | Formatted pricing (e.g., `$69/month`, `Free`) |
-| `isFree` | Boolean | `true` if free, `false` if paid |
-| `priceAmount` | Float | Numeric monthly price (e.g., `69.0`) |
-| `currency` | String | Billing currency (e.g., `USD`) |
-| `billingInterval` | String | Recurring period (`month` or one-time) |
-| `reviewAverageRating` | Float | Average member review score (1.0 to 5.0) |
-| `reviewCount` | Integer | Total public reviews count |
-| `logoUrl` | String | Creator / community avatar image URL |
-| `coverSmallUrl` | String | Header banner image URL |
-| `rank` | Integer | Position in discovery rank |
-| `createdAt` | String | Community creation timestamp |
-| `updatedAt` | String | Last update timestamp |
-| `scrapedAt` | String | ISO timestamp when record was collected |
-
----
-
-## 🛠️ Input Configuration
-
-| Parameter | Type | Default | Description |
+| Parameter | Type | Default | Notes |
 |---|---|---|---|
-| `searchQuery` | String | `""` | Search keyword (e.g. `ecommerce`, `trading`). Leave blank to browse all. |
-| `category` | String | `"all"` | Filter by category (`tech`, `money`, `health`, etc.). |
-| `price` | String | `"all"` | `"all"`, `"free"`, or `"paid"`. |
-| `sort` | String | `"trending"` | `"trending"`, `"rank"`, `"members"`, or `"newest"`. |
-| `maxItems` | Integer | `100` | Maximum number of communities to extract. |
+| `searchQuery` | string | `""` | Search keyword (e.g. `marketing`, `ai`, `trading`) |
+| `category` | string | `"all"` | `tech`, `money`, `hobbies`, `music`, `health`, `sports`, `self_improvement`, `relationships`, `spirituality` |
+| `price` | string | `"all"` | `all`, `free`, or `paid` |
+| `sort` | string | `"trending"` | `trending`, `rank`, `members`, or `newest` |
+| `maxItems` | integer | `100` | Maximum records to return |
 
-### Sample Input (JSON)
-
-```json
-{
-  "searchQuery": "ai",
-  "category": "all",
-  "price": "paid",
-  "sort": "members",
-  "maxItems": 100
-}
-```
-
----
-
-## 📦 Sample Output
+## Example output
 
 ```json
 {
@@ -85,14 +56,12 @@ Each community record contains:
   "billingInterval": "month",
   "reviewAverageRating": 5.0,
   "reviewCount": 27,
-  "logoUrl": "https://assets.skool.com/f/309a463889ba441682109e263ba9e3fb/7301cd31e50247ddbb7482dfae43b9f152b9a022b39e4583999ef990935caf54",
-  "createdAt": "2024-08-15T03:29:27.994705Z",
-  "rank": 1
+  "rank": 1,
+  "scrapedAt": "2026-10-22T15:08:11Z"
 }
 ```
 
----
+## Limitations
 
-## ⚡ Performance & Costs
-
-Because this Actor does not boot a browser (Chromium/Puppeteer), it consumes roughly **0.005 Compute Units (CU)** per run. Running 1,000 communities costs less than **$0.01** in platform compute.
+- Only extracts public community metadata from the discovery directory.
+- Does not scrape private posts, course classroom modules, or member lists behind a paid login wall.

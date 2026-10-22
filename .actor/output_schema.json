@@ -1,0 +1,13 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Skool Community Scraper Output",
+  "description": "Extracted Skool communities dataset with member counts, pricing, rankings, and metadata.",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Results",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    }
+  }
+}

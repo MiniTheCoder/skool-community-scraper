@@ -8,6 +8,7 @@ storage/
 !actor.json
 !input_schema.json
 !dataset_schema.json
+!output_schema.json
 probe_*.py
 test_*.py
 inspect_*.py

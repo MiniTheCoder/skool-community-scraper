@@ -3,7 +3,7 @@
     "name": "skool-community-scraper",
     "title": "Skool Community & Group Scraper (Fast & Cheap)",
     "description": "Scrape public Skool communities by keyword, category, price, and rank. Extract member counts, pricing tiers, creator profiles, and reviews with zero browser overhead.",
-    "version": "0.1.0",
+    "version": "0.0",
     "meta": {
         "templateId": "python-empty"
     },

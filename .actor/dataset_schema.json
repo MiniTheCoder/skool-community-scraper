@@ -1,123 +1,123 @@
 {
-    "actorSpecification": 1,
-    "fields": {
-        "id": {
-            "type": "string",
-            "label": "ID"
-        },
-        "name": {
-            "type": "string",
-            "label": "Slug"
-        },
-        "displayName": {
-            "type": "string",
-            "label": "Community Name"
-        },
-        "url": {
-            "type": "string",
-            "label": "URL",
-            "format": "uri"
-        },
-        "totalMembers": {
-            "type": "integer",
-            "label": "Members"
-        },
-        "priceFormatted": {
-            "type": "string",
-            "label": "Price"
-        },
-        "isFree": {
-            "type": "boolean",
-            "label": "Is Free"
-        },
-        "priceAmount": {
-            "type": "number",
-            "label": "Monthly Price"
-        },
-        "currency": {
-            "type": "string",
-            "label": "Currency"
-        },
-        "billingInterval": {
-            "type": "string",
-            "label": "Interval"
-        },
-        "reviewAverageRating": {
-            "type": "number",
-            "label": "Rating"
-        },
-        "reviewCount": {
-            "type": "integer",
-            "label": "Reviews"
-        },
-        "description": {
-            "type": "string",
-            "label": "Description"
-        },
-        "logoUrl": {
-            "type": "string",
-            "label": "Logo",
-            "format": "uri"
-        },
-        "coverSmallUrl": {
-            "type": "string",
-            "label": "Cover",
-            "format": "uri"
-        },
-        "createdAt": {
-            "type": "string",
-            "label": "Created At",
-            "format": "date-time"
-        },
-        "rank": {
-            "type": "integer",
-            "label": "Rank"
-        },
-        "scrapedAt": {
-            "type": "string",
-            "label": "Scraped At",
-            "format": "date-time"
-        }
-    },
-    "views": {
-        "overview": {
-            "label": "Overview",
-            "transformation": {
-                "fields": [
-                    "displayName",
-                    "totalMembers",
-                    "priceFormatted",
-                    "reviewAverageRating",
-                    "reviewCount",
-                    "url"
-                ]
-            },
-            "display": {
-                "component": "table",
-                "properties": {
-                    "displayName": {
-                        "label": "Community"
-                    },
-                    "totalMembers": {
-                        "label": "Members",
-                        "format": "number"
-                    },
-                    "priceFormatted": {
-                        "label": "Price"
-                    },
-                    "reviewAverageRating": {
-                        "label": "Rating"
-                    },
-                    "reviewCount": {
-                        "label": "Reviews",
-                        "format": "number"
-                    },
-                    "url": {
-                        "label": "Link",
-                        "format": "link"
-                    }
-                }
-            }
-        }
+  "actorSpecification": 1,
+  "fields": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Unique identifier of the community"
+      },
+      "name": {
+        "type": "string",
+        "description": "Unique URL slug"
+      },
+      "displayName": {
+        "type": "string",
+        "description": "Public name of the community"
+      },
+      "url": {
+        "type": "string",
+        "description": "Direct URL link to the community"
+      },
+      "description": {
+        "type": "string",
+        "description": "Community tagline and description"
+      },
+      "totalMembers": {
+        "type": "integer",
+        "description": "Total member count"
+      },
+      "priceFormatted": {
+        "type": "string",
+        "description": "Formatted price (e.g. $69/month or Free)"
+      },
+      "isFree": {
+        "type": "boolean",
+        "description": "Whether the community is free"
+      },
+      "priceAmount": {
+        "type": "number",
+        "description": "Numeric price value"
+      },
+      "currency": {
+        "type": "string",
+        "description": "Currency code (USD)"
+      },
+      "billingInterval": {
+        "type": "string",
+        "description": "Recurring billing interval"
+      },
+      "reviewAverageRating": {
+        "type": "number",
+        "description": "Average review rating"
+      },
+      "reviewCount": {
+        "type": "integer",
+        "description": "Total number of reviews"
+      },
+      "logoUrl": {
+        "type": "string",
+        "description": "Logo / avatar URL"
+      },
+      "coverSmallUrl": {
+        "type": "string",
+        "description": "Cover banner URL"
+      },
+      "rank": {
+        "type": "integer",
+        "description": "Rank in discovery results"
+      },
+      "createdAt": {
+        "type": "string",
+        "description": "Creation timestamp"
+      },
+      "scrapedAt": {
+        "type": "string",
+        "description": "Scrape timestamp"
+      }
     }
+  },
+  "views": {
+    "overview": {
+      "title": "Overview",
+      "transformation": {
+        "fields": [
+          "displayName",
+          "totalMembers",
+          "priceFormatted",
+          "reviewAverageRating",
+          "reviewCount",
+          "url"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "displayName": {
+            "label": "Community"
+          },
+          "totalMembers": {
+            "label": "Members",
+            "format": "number"
+          },
+          "priceFormatted": {
+            "label": "Price"
+          },
+          "reviewAverageRating": {
+            "label": "Rating",
+            "format": "number"
+          },
+          "reviewCount": {
+            "label": "Reviews",
+            "format": "number"
+          },
+          "url": {
+            "label": "Link",
+            "format": "link"
+          }
+        }
+      }
+    }
+  }
 }

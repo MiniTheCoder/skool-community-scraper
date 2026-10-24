@@ -1,6 +1,10 @@
 # Skool Community Scraper
 
+[![Run on Apify](https://apify.com/actor-badge?actor=fastdata_lab/skool-community-scraper)](https://apify.com/fastdata_lab/skool-community-scraper)
+
 Extracts public community data from Skool's discovery directory without requiring a login or browser automation.
+
+[**Run directly on Apify Store**](https://apify.com/fastdata_lab/skool-community-scraper) — zero installation required.
 
 ## What it does
 
